@@ -179,8 +179,7 @@ Photino::Photino(PhotinoInitParams* initParams)
         [_webviewConfiguration.preferences setValue: @YES forKey: @"developerExtrasEnabled"];
 
     // FIX AUTOPLAY ISSUES
-    [_webviewConfiguration setMediaPlaybackRequiresUserAction:NO];
-    [_webviewConfiguration setRequiresUserActionForMediaPlayback:NO];
+    _webviewConfiguration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
 
     //wire up custom url schemes
     for (auto & scheme : _customSchemeNames)
