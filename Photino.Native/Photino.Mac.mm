@@ -185,7 +185,7 @@ Photino::Photino(PhotinoInitParams* initParams)
     [_webviewConfiguration setMediaPlaybackAllowsAirPlay:YES];
     [_webviewConfiguration setMediaPlaybackRequiresUserAction:NO];
     [_webviewConfiguration setRequiresUserActionForMediaPlayback:NO];
-    [_webviewConfiguration setMediaTypesRequiringUserActionForPlayback:WKAudiovisualMediaTypesNone];
+    [_webviewConfiguration setMediaTypesRequiringUserActionForPlayback:WKAudiovisualMediaTypeNone];
 
     //wire up custom url schemes
     for (auto & scheme : _customSchemeNames)
