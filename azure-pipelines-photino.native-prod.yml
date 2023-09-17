@@ -234,3 +234,9 @@ jobs:
       inputs:
         workingDirectory: '$(Pipeline.Workspace)'
         script: 'nuget.exe pack Photino.Native.nuspec -Version $(major).$(minor).$(patch) -NonInteractive -Properties version=$(major).$(minor).$(patch)'
+
+    - task: PublishPipelineArtifact@2
+      displayName: 'Publish NuGet package to artifacts'
+      inputs:
+        targetPath: '$(Pipeline.Workspace)'
+        artifactName: NuGetPackage
