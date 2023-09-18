@@ -192,7 +192,6 @@ Photino::Photino(PhotinoInitParams* initParams)
     _webviewConfiguration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
     [_webviewConfiguration setMediaTypesRequiringUserActionForPlayback:WKAudiovisualMediaTypeNone];
     [_webviewConfiguration.preferences _setLowPowerVideoAudioBufferSizeEnabled:NO];
-    [_webviewConfiguration.preferences setWebSecurityEnabled:NO];
     [_webviewConfiguration.preferences setValue: @YES forKey: @"javaScriptCanAccessClipboard"];
 
     //wire up custom url schemes
