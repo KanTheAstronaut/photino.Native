@@ -187,7 +187,7 @@ Photino::Photino(PhotinoInitParams* initParams)
     if (_devToolsEnabled)
         [_webviewConfiguration.preferences setValue: @YES forKey: @"developerExtrasEnabled"];
 
-    // FIX AUTOPLAY ISSUES
+    // FIX AUTOPLAY ISSUES AND CLIPBOARD
     [_webviewConfiguration.preferences setValue: @NO forKey: @"requiresUserGestureForVideoPlayback"];
     _webviewConfiguration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
     [_webviewConfiguration setMediaTypesRequiringUserActionForPlayback:WKAudiovisualMediaTypeNone];
