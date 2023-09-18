@@ -191,7 +191,7 @@ Photino::Photino(PhotinoInitParams* initParams)
     [_webviewConfiguration.preferences setValue: @NO forKey: @"requiresUserGestureForVideoPlayback"];
     _webviewConfiguration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
     [_webviewConfiguration setMediaTypesRequiringUserActionForPlayback:WKAudiovisualMediaTypeNone];
-    [_webviewConfiguration _setLowPowerVideoAudioBufferSizeEnabled:NO];
+    [_webviewConfiguration.preferences _setLowPowerVideoAudioBufferSizeEnabled:NO];
 
     //wire up custom url schemes
     for (auto & scheme : _customSchemeNames)
