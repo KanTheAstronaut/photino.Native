@@ -20,18 +20,10 @@ void Photino::Register()
     NSApplication *application = [NSApplication sharedApplication];
     [application setDelegate: appDelegate];
     [application setActivationPolicy: NSApplicationActivationPolicyRegular];
-
+    
     NSProcessInfo *processInfo = [NSProcessInfo processInfo];
     NSString *appName = [processInfo processName];
-	
-    if ([processInfo isLowPowerModeEnabled]) {
-        NSLog(@"Low Power Mode is enabled");
-        // Handle low power mode behavior
-    } else {
-        NSLog(@"Low Power Mode is not enabled");
-        // Handle regular behavior
-    }
-	
+
     NSString *quitTitle = [@"Quit " stringByAppendingString: appName];
     NSMenuItem *quitMenuItem = [[
         [NSMenuItem alloc]
@@ -187,7 +179,7 @@ Photino::Photino(PhotinoInitParams* initParams)
     if (_devToolsEnabled)
         [_webviewConfiguration.preferences setValue: @YES forKey: @"developerExtrasEnabled"];
 
-    // FIX AUTOPLAY ISSUES AND CLIPBOARD
+    // FIX AUTOPLAY ISSUES
     [_webviewConfiguration.preferences setValue: @NO forKey: @"requiresUserGestureForVideoPlayback"];
     _webviewConfiguration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
     [_webviewConfiguration setMediaTypesRequiringUserActionForPlayback:WKAudiovisualMediaTypeNone];
