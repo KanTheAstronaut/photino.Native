@@ -22,7 +22,15 @@ void Photino::Register()
     [application setActivationPolicy: NSApplicationActivationPolicyRegular];
 
     NSString *appName = [[NSProcessInfo processInfo] processName];
-
+	
+    if ([processInfo isLowPowerModeEnabled]) {
+        NSLog(@"Low Power Mode is enabled");
+        // Handle low power mode behavior
+    } else {
+        NSLog(@"Low Power Mode is not enabled");
+        // Handle regular behavior
+    }
+	
     NSString *quitTitle = [@"Quit " stringByAppendingString: appName];
     NSMenuItem *quitMenuItem = [[
         [NSMenuItem alloc]
@@ -182,11 +190,7 @@ Photino::Photino(PhotinoInitParams* initParams)
     [_webviewConfiguration.preferences setValue: @NO forKey: @"requiresUserGestureForVideoPlayback"];
     _webviewConfiguration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
     [_webviewConfiguration setMediaTypesRequiringUserActionForPlayback:WKAudiovisualMediaTypeNone];
-    //_webviewConfiguration._requiresUserActionForVideoPlayback = NO;
-    NSLog(@"test");
-    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-    [alert setMessageText:@"test"];
-    [alert runModal];
+    _webviewConfiguration.requiresUserActionForMediaPlayback = NO;
 
     //wire up custom url schemes
     for (auto & scheme : _customSchemeNames)
