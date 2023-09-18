@@ -707,7 +707,13 @@ void Photino::Invoke(ACTION callback)
 void Photino::AttachWebView()
 {
 	size_t runtimePathLen = wcsnlen(_webview2RuntimePath, _countof(_webview2RuntimePath));
+
 	PCWSTR runtimePath = runtimePathLen > 0 ? &_webview2RuntimePath[0] : nullptr;
+
+	std::wstring args;
+	args.append(L"--autoplay-policy=no-user-gesture-required");
+	auto options = Microsoft::WRL::Make<CoreWebView2EnvironmentOptions>();
+	options->put_AdditionalBrowserArguments(args.c_str());
 
 	HRESULT envResult = CreateCoreWebView2EnvironmentWithOptions(runtimePath, _temporaryFilesPath, nullptr,
 		Callback<ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler>(
