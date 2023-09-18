@@ -183,6 +183,10 @@ Photino::Photino(PhotinoInitParams* initParams)
     _webviewConfiguration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
     [_webviewConfiguration setMediaTypesRequiringUserActionForPlayback:WKAudiovisualMediaTypeNone];
     //_webviewConfiguration._requiresUserActionForVideoPlayback = NO;
+    NSLog(@"test");
+    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    [alert setMessageText:@"test"];
+    [alert runModal];
 
     //wire up custom url schemes
     for (auto & scheme : _customSchemeNames)
