@@ -633,7 +633,7 @@ void Photino::Show()
 		webkit_settings_set_enable_developer_extras(settings, _devToolsEnabled);
 		webkit_settings_set_enable_media_capabilities(settings, TRUE);
 		webkit_settings_set_enable_media_stream(settings, TRUE);
-
+		g_object_set(G_OBJECT(settings), "enable-autoplay-policy", TRUE, NULL);
 		webkit_settings_set_javascript_can_access_clipboard(settings, TRUE);
 		webkit_settings_set_javascript_can_open_windows_automatically(settings, TRUE);
 
