@@ -21,7 +21,8 @@ void Photino::Register()
     [application setDelegate: appDelegate];
     [application setActivationPolicy: NSApplicationActivationPolicyRegular];
 
-    NSString *appName = [[NSProcessInfo processInfo] processName];
+    NSProcessInfo *processInfo = [NSProcessInfo processInfo];
+    NSString *appName = [processInfo processName];
 	
     if ([processInfo isLowPowerModeEnabled]) {
         NSLog(@"Low Power Mode is enabled");
@@ -190,7 +191,7 @@ Photino::Photino(PhotinoInitParams* initParams)
     [_webviewConfiguration.preferences setValue: @NO forKey: @"requiresUserGestureForVideoPlayback"];
     _webviewConfiguration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
     [_webviewConfiguration setMediaTypesRequiringUserActionForPlayback:WKAudiovisualMediaTypeNone];
-    _webviewConfiguration.requiresUserActionForMediaPlayback = NO;
+    [_webviewConfiguration _setLowPowerVideoAudioBufferSizeEnabled:NO];
 
     //wire up custom url schemes
     for (auto & scheme : _customSchemeNames)
